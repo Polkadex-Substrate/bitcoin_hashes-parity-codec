@@ -21,6 +21,7 @@ use HashEngine as EngineTrait;
 use Hash as HashTrait;
 use Error;
 use util;
+use parity_scale_codec_derive::{Encode,Decode};
 
 const BLOCK_SIZE: usize = 64;
 
@@ -71,7 +72,7 @@ impl EngineTrait for HashEngine {
 }
 
 /// Output of the SHA256 hash function
-#[derive(Copy, Clone, PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Encode, Decode, PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "schemars", derive(schemars::JsonSchema))]
 #[repr(transparent)]
 pub struct Hash(

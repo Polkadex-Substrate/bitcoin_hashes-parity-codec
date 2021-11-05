@@ -25,9 +25,10 @@ use sha256;
 use ripemd160;
 use Hash as HashTrait;
 use Error;
+use parity_scale_codec_derive::{Encode,Decode};
 
 /// Output of the Bitcoin HASH160 hash function
-#[derive(Copy, Clone, PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, Decode, Encode,PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "schemars", derive(schemars::JsonSchema))]
 #[repr(transparent)]
 pub struct Hash(

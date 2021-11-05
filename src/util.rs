@@ -208,16 +208,16 @@ define_slice_to_le!(slice_to_u32_le, u32);
 define_slice_to_le!(slice_to_u64_le, u64);
 define_le_to_array!(u32_to_array_le, u32, 4);
 define_le_to_array!(u64_to_array_le, u64, 8);
-
 /// Create a new newtype around a [Hash] type.
 #[macro_export]
 macro_rules! hash_newtype {
+
     ($newtype:ident, $hash:ty, $len:expr, $docs:meta) => {
         hash_newtype!($newtype, $hash, $len, $docs, <$hash as $crate::Hash>::DISPLAY_BACKWARD);
     };
     ($newtype:ident, $hash:ty, $len:expr, $docs:meta, $reverse:expr) => {
         #[$docs]
-        #[derive(Copy, Clone, PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
+        #[derive(Copy, Clone, Decode, Encode, PartialEq, Eq, Default, PartialOrd, Ord, Hash,Decode, Encode)]
         #[repr(transparent)]
         pub struct $newtype($hash);
 

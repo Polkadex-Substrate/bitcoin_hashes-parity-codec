@@ -44,6 +44,9 @@
 #[cfg(feature="serde")] pub extern crate serde;
 #[cfg(all(test,feature="serde"))] extern crate serde_test;
 
+extern crate codec;
+extern crate parity_scale_codec_derive;
+
 #[doc(hidden)]
 pub mod _export {
     /// A re-export of ::core::*

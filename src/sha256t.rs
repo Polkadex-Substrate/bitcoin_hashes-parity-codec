@@ -22,6 +22,7 @@ use sha256;
 use Hash as HashTrait;
 #[allow(unused)]
 use Error;
+use parity_scale_codec_derive::{Decode,Encode};
 
 /// Trait representing a tag that can be used as a context for SHA256t hashes.
 pub trait Tag {
@@ -33,6 +34,7 @@ pub trait Tag {
 /// Output of the SHA256t hash function.
 #[cfg_attr(feature = "schemars", derive(schemars::JsonSchema))]
 #[repr(transparent)]
+#[derive(Encode,Decode)]
 pub struct Hash<T: Tag>(
     #[cfg_attr(feature = "schemars", schemars(schema_with="crate::util::json_hex_string::len_32"))]
     [u8; 32],

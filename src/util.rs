@@ -217,7 +217,7 @@ macro_rules! hash_newtype {
     };
     ($newtype:ident, $hash:ty, $len:expr, $docs:meta, $reverse:expr) => {
         #[$docs]
-        #[derive(Copy, Clone, Decode, Encode, PartialEq, Eq, Default, PartialOrd, Ord, Hash,Decode, Encode)]
+        #[derive(Copy, Clone, Decode, Encode, PartialEq, Eq, Default, PartialOrd, Ord, Hash)]
         #[repr(transparent)]
         pub struct $newtype($hash);
 
